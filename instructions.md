@@ -1,3 +1,7 @@
+# react-puppies-crud-frontend
+## This application serves as the front end for a full-stack MERN application demonstrating full CRUD with puppies.  
+## The back end application can be found [here](https://github.com/ManliestBen/node-puppies-crud-backend).
+## 
 ## Create the React app in a different directory than your backend, then navigate inside.
 ```
 npx create-react-app pup-app-frontend
