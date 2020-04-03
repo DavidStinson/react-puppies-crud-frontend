@@ -1,7 +1,6 @@
 # react-puppies-crud-frontend
 ## This application serves as the front end for a full-stack MERN application demonstrating full CRUD with puppies.  
 ## The back end application can be found [here](https://github.com/ManliestBen/node-puppies-crud-backend).
-
 ## 
 ## Create the React app in a different directory than your backend, then navigate inside.
 ```
@@ -211,6 +210,45 @@ const port = process.env.PORT || 3001;
     ]
   },
   "proxy": "http://localhost:3001"
+}
+```
+## The controller functions in the back end also need to be re-written as asynchronous functions using async await:
+```js
+// puppies.js in back end server:
+const Puppy =require('../../models/puppy');
+
+module.exports = {
+    index,
+    create,
+    show,
+    update,
+    delete: deleteOne
+
+};
+
+async function index(req, res) {
+    const puppies = await Puppy.find({});
+    res.status(200).json(puppies);
+}
+
+async function create(req, res) {
+    const puppy = await Puppy.create(req.body);
+    res.status(201).json(puppy);
+}
+
+async function show(req, res) {
+    const puppy = await Puppy.findById(req.params.id);
+    res.status(200).json(puppy);
+}
+
+async function update(req, res) {
+    const updatedPuppy = await Puppy.findByIdAndUpdate(req.params.id, req.body, {new: true});
+    res.status(200).json(updatedPuppy);
+}
+
+async function deleteOne(req, res) {
+    const deletedPuppy = await Puppy.findByIdAndRemove(req.params.id);
+    res.status(200).json(deletedPuppy);
 }
 ```
 ## Export a function to fetch all the puppies from the back end server:
