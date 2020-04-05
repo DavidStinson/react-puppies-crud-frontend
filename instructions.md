@@ -164,7 +164,7 @@ export default App;
 ```
 ## Create puppies-api.js inside of the services directory.  This file will hold the functions responsible for interacting with the backend.  Import these functions in App.js to gain access to them:
 ```
-touch /src/services/puppies-api.js
+touch src/services/puppies-api.js
 ```
 ```js
 // App.js
