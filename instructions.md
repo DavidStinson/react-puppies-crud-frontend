@@ -370,6 +370,7 @@ import PuppyCard from '../../components/PuppyCard/PuppyCard';
     <div className='PuppyListPage-grid'>
         {props.puppies.map(puppy =>
             <PuppyCard
+                key={puppy._id}
                 puppy={puppy}
             />
         )}
